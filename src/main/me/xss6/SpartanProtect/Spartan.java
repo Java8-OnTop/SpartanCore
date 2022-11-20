@@ -1,3 +1,5 @@
+package me.xss6.SpartanProtect;
+
 import org.bukkit.BanList;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -15,13 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class AntiSpam extends JavaPlugin implements Listener, CommandExecutor {
-    //UUID playerUuid = new UUID(0, 0);
-    Map<UUID, Integer> playerMap = new HashMap<>();
-    int limit_second, limit_count, tempban_time;
-    String punish_type, message;
-    BanList banList = getServer().getBanList(BanList.Type.NAME);
-
+public final class Spartan extends JavaPlugin implements Listener, CommandExecutor {
     @Override
     public void onEnable() {
         // Plugin startup logic
