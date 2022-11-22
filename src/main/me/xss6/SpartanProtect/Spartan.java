@@ -19,6 +19,8 @@ import java.util.UUID;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.xss6.SpartanProtect.listeners.ServerPingListener;
+import me.xss6.SpartanProtect.listeners.JoinCheck;
+import org.bukkit.plugin.PluginManager;
 
 public final class Spartan extends JavaPlugin implements Listener, CommandExecutor {
     @Override
@@ -33,6 +35,9 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         Spartan.Instance = this;
         this.getServer().getPluginManager().registerEvents((Listener)new ServerPingListener(), (Plugin)this);
         this.getLogger().info("SpartanProtect v" + "0.0.2" + " Enabled!");
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(this, this);
+        pm.registerEvents(new JoinCheck(this), this);
     }
 
     @Override
