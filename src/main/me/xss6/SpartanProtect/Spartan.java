@@ -16,12 +16,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.Objects;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.xss6.SpartanProtect.listeners.ServerPingListener;
 import me.xss6.SpartanProtect.listeners.JoinCheck;
 import me.xss6.SpartanProtect.listeners.InventoryOpenCheck;
+import me.xss6.SpartanProtect.commands.Reload;
 import org.bukkit.plugin.PluginManager;
+import com.comphenix.protocol.ProtocolManager;
 
 public final class Spartan extends JavaPlugin implements Listener, CommandExecutor {
     @Override
@@ -40,6 +43,8 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         pm.registerEvents(this, this);
         pm.registerEvents(new JoinCheck(this), this);
         pm.registerEvents(new InventoryOpenCheck(this), this);
+        
+        Objects.requireNonNull(getCommand("sef")).setExecutor(new Reload(this));
     }
 
     @Override
