@@ -26,7 +26,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import me.xss6.SpartanProtect.listeners.ServerPingListener;
 import me.xss6.SpartanProtect.listeners.JoinCheck;
 import me.xss6.SpartanProtect.listeners.InventoryOpenCheck;
-import me.xss6.SpartanProtect.commands.Reload;
 import me.xss6.SpartanProtect.listeners.lag.*;
 import me.xss6.SpartanProtect.listeners.AntiNetherRoof;
 import me.xss6.SpartanProtect.listeners.RandomRespawn;
