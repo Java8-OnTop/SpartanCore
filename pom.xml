@@ -4,18 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tetratheta</groupId>
-    <artifactId>AntiSpam</artifactId>
-    <version>1.0.1</version>
+    <groupId>me.xss6</groupId>
+    <artifactId>SpartanCore</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>AntiSpam</name>
+    <name>SpartanProtect</name>
 
-    <description>I hate spam</description>
+    <description>A paper plugin to prevent illegals, have multiple game improvements, random MOTDs, and 
+             custom commands for my server.
+    </description>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <url>spartan.tk</url>
 
     <build>
         <plugins>
@@ -55,8 +58,8 @@
 
     <repositories>
         <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>papermc</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -66,9 +69,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
