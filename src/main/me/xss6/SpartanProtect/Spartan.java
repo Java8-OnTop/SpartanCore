@@ -63,7 +63,6 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         pm.registerEvents(new RandomRespawn(), this);
         pm.registerEvents(new AntiNetherRoof(), this);
         
-        Objects.requireNonNull(getCommand("sef")).setExecutor(new Reload(this));
         
         if (instance == null) instance = this;
         
