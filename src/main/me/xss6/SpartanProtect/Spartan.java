@@ -29,6 +29,7 @@ import me.xss6.SpartanProtect.listeners.InventoryOpenCheck;
 import me.xss6.SpartanProtect.commands.Reload;
 import me.xss6.SpartanProtect.listeners.lag.*;
 import me.xss6.SpartanProtect.listeners.AntiNetherRoof;
+import me.xss6.SpartanProtect.listeners.RandomRespawn;
 import org.bukkit.plugin.PluginManager;
 import com.comphenix.protocol.ProtocolManager;
 
@@ -57,6 +58,10 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         
         //exploits
         pm.registerEvents(new ArmorStand(this), this);
+        
+        //features
+        pm.registerEvents(new RandomRespawn(), this);
+        pm.registerEvents(new AntiNetherRoof(), this);
         
         Objects.requireNonNull(getCommand("sef")).setExecutor(new Reload(this));
         
