@@ -62,6 +62,7 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         //features
         pm.registerEvents(new RandomRespawn(), this);
         pm.registerEvents(new AntiNetherRoof(), this);
+        pm.registerEvents(new CustomChat(), this);
         
         LimitArmorStands.limit();
         
