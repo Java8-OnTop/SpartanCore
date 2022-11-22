@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class Join implements Listener {
+public class JoinCheck implements Listener {
     private Spartan plugin;
 
     public Join(Spartan plugin) {
