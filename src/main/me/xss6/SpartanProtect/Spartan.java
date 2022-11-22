@@ -60,19 +60,18 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         return true;
     }
   
-  @Override
-  public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-      if (args.length >= 1) {
-          if (args[0].equalIgnoreCase("discord")) {
-              sender.sendMessage("https://dsc.gg/spartananarchy");
-              return true;
-          }
-          
-          if (args[0].equalIgnoreCase("donate")) {
-              sender.sendMessage("To donate, visit: http://spartananarchy.tk/");
-              return true;
-          }
-      }
-      return true;
-  }
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length >= 1) {
+            if (args[0].equalIgnoreCase("discord")) {
+                sender.sendMessage("https://dsc.gg/spartananarchy");
+                return true;
+            }
+            if (args[0].equalIgnoreCase("donate")) {
+                sender.sendMessage("To donate, visit: http://spartananarchy.tk/");
+                return true;
+            }
+        }
+        return true;
+    }
 }
