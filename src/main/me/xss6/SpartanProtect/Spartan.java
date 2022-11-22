@@ -20,6 +20,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.xss6.SpartanProtect.listeners.ServerPingListener;
 import me.xss6.SpartanProtect.listeners.JoinCheck;
+import me.xss6.SpartanProtect.listeners.InventoryOpenCheck;
 import org.bukkit.plugin.PluginManager;
 
 public final class Spartan extends JavaPlugin implements Listener, CommandExecutor {
@@ -38,6 +39,7 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(this, this);
         pm.registerEvents(new JoinCheck(this), this);
+        pm.registerEvents(new InventoryOpenCheck(this), this);
     }
 
     @Override
