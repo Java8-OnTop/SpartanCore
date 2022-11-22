@@ -28,6 +28,7 @@ import me.xss6.SpartanProtect.listeners.JoinCheck;
 import me.xss6.SpartanProtect.listeners.InventoryOpenCheck;
 import me.xss6.SpartanProtect.commands.Reload;
 import me.xss6.SpartanProtect.listeners.lag.*;
+import me.xss6.SpartanProtect.listeners.AntiNetherRoof;
 import org.bukkit.plugin.PluginManager;
 import com.comphenix.protocol.ProtocolManager;
 
