@@ -1,16 +1,9 @@
 FixArmorStandLag: true
 DisableAllProtocolLib: false
 
-tablist:
-  header:
-    - ""
-    - "&4Spartan&3.tk"
-    - ""
-    - "&6Gaming"
-    - ""
-  footer:
-    - ""
-    - "&3%tps% tps — %players% players — %ping% ping — %uptime% uptime"
-    - ""
-    - "&7donate: http://spartanarchy.tk/""
-    - ""
+Messages:
+- '&3Welcome to the Server'
+- 'Information can be found here!'
+- '&4This server uses &cPingMOTD!'
+- 'Enter if you dare!'
+- 'I like cheese, :P'
