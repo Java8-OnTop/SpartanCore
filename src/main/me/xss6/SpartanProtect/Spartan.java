@@ -23,12 +23,15 @@ import me.xss6.SpartanProtect.listeners.ServerPingListener;
 import me.xss6.SpartanProtect.listeners.JoinCheck;
 import me.xss6.SpartanProtect.listeners.InventoryOpenCheck;
 import me.xss6.SpartanProtect.commands.Reload;
+import me.xss6.SpartanProtect.listeners.lag.*;
 import org.bukkit.plugin.PluginManager;
 import com.comphenix.protocol.ProtocolManager;
 
 public final class Spartan extends JavaPlugin implements Listener, CommandExecutor {
     @Override
-    final Spartan Instance;
+    private static Spartan Instance;
+    private ProtocolManager protocolManager;
+    
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Spartan Protection is enabled");
@@ -39,12 +42,34 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         Spartan.Instance = this;
         this.getServer().getPluginManager().registerEvents((Listener)new ServerPingListener(), (Plugin)this);
         this.getLogger().info("SpartanProtect v" + "0.0.2" + " Enabled!");
+        
         PluginManager pm = getServer().getPluginManager();
+        
+        //stacked items
         pm.registerEvents(this, this);
         pm.registerEvents(new JoinCheck(this), this);
         pm.registerEvents(new InventoryOpenCheck(this), this);
         
+        //exploits
+        pm.registerEvents(new ArmorStand(this), this);
+        
         Objects.requireNonNull(getCommand("sef")).setExecutor(new Reload(this));
+        
+        if (instance == null) instance = this;
+        
+        if (getConfig().getBoolean("DisableAllProtocolLib")) {
+            getLogger().info("You specified to disable all ProtocolLib patches.");
+        } else {
+            if (getServer().getPluginManager().getPlugin("ProtocolLib") != null) {
+                getLogger().info("Detected ProtocolLib!");
+                ProtocolLib.protocolLibWrapper(this);
+            } else {
+                getLogger().warning("Did not detect ProtocolLib, disabling packet patches");
+            }
+        }
+    }
+    public ProtocolManager getProtocolManager() {
+        return protocolManager;
     }
 
     @Override
@@ -54,17 +79,6 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         this.getLogger().info("RandomMOTD v" + this.getDescription().getVersion() + " Disabled!");
     }
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length >= 1) {
-            if (args[0].equalsIgnoreCase("reload")) {
-                getLogger().info("Spartan Protection config reloaded");
-                return true;
-            }
-        }
-        return true;
-    }
-  
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length >= 1) {
@@ -79,4 +93,23 @@ public final class Spartan extends JavaPlugin implements Listener, CommandExecut
         }
         return true;
     }
+    
+    public Integer count(Chunk c, Material m ) { // Super cool count feature to count the amount of blocks per chunk.
+        int num = 0;
+        for (int x = 0; x < 16; x++) {
+            for (int z = 0; z < 16; z++) {
+                for (int y = 0; y < 256; y++) {
+                    if (c.getBlock(x, y, z).getType() == m) {
+                        num++;
+                    }
+                }
+            }
+        }
+        return num;
+    }
+    
+    public static Spartan getInstance() {
+        return instance;
+    }
+
 }
